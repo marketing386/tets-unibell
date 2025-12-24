@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Партнерская программа | Unibell Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f171e;
+            --accent: #3fe8d1;
+            --glass: rgba(28, 42, 56, 0.6);
+            --border: rgba(63, 232, 209, 0.15);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .neon-glow { text-shadow: 0 0 20px rgba(63, 232, 209, 0.4); }
+
+        .premium-card {
+            background: linear-gradient(135deg, rgba(28, 42, 56, 0.8) 0%, rgba(20, 30, 40, 0.9) 100%);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+
+        .premium-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+        .hero-circle {
+            width: 280px; height: 280px;
+            border: 1px solid rgba(63, 232, 209, 0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        @media (min-width: 1024px) { .hero-circle { width: 450px; height: 450px; } }
+
+        .floating-widget {
+            position: absolute; background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 10px 18px; border-radius: 12px;
+            font-size: 11px; backdrop-filter: blur(10px);
+            white-space: nowrap; z-index: 10;
+        }
+        @media (min-width: 1024px) { .floating-widget { padding: 14px 24px; font-size: 13px; } }
+
+        .innovative-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px; border-radius: 14px;
+            width: 100%; color: white; transition: 0.3s;
+        }
+        .innovative-input:focus { border-color: var(--accent); background: rgba(63, 232, 209, 0.05); outline: none; }
+
+        .btn-neon {
+            background: var(--accent); color: #000; font-weight: 800;
+            padding: 18px 32px; border-radius: 14px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+            text-align: center; display: block; width: 100%;
+        }
+        @media (min-width: 640px) { .btn-neon { width: auto; display: inline-block; padding: 20px 40px; } }
+        .btn-neon:hover { box-shadow: 0 0 35px rgba(63, 232, 209, 0.5); }
+
+        /* ЛОГО: больше + видимее */
+        .brand-logo {
+            height: 34px;
+            width: auto;
+            display: block;
+            filter: brightness(1.45) contrast(1.15) drop-shadow(0 0 14px rgba(63, 232, 209, 0.22));
+        }
+        @media (min-width: 768px) {
+            .brand-logo { height: 44px; }
+        }
+
+        .brand-logo-hero {
+            width: 210px;
+            height: auto;
+            opacity: 0.92;
+            filter: brightness(1.6) contrast(1.2) drop-shadow(0 0 26px rgba(63, 232, 209, 0.28));
+        }
+        @media (min-width: 1024px) {
+            .brand-logo-hero { width: 300px; }
+        }
+
+        .brand-logo-footer {
+            height: 34px;
+            width: auto;
+            filter: brightness(1.45) contrast(1.15) drop-shadow(0 0 16px rgba(63, 232, 209, 0.22));
+        }
+        @media (min-width: 768px) {
+            .brand-logo-footer { height: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 px-4 md:px-10 py-5 flex justify-between items-center bg-[#0f171e]/90 backdrop-blur-md border-b border-white/5">
+        <a href="#" class="flex items-center gap-3">
+            <img src="unibell-logo.png" alt="Unibell" class="brand-logo select-none" />
+            <span class="sr-only">unibell</span>
+        </a>
+
+        <div class="hidden lg:flex gap-10 text-[11px] uppercase tracking-[0.2em] font-bold text-gray-400">
+            <a href="#benefits" class="hover:text-[#3fe8d1] transition">Преимущества</a>
+            <a href="#status" class="hover:text-[#3fe8d1] transition">Как стать партнером</a>
+            <a href="#form" class="hover:text-[#3fe8d1] transition">Контакты</a>
+        </div>
+        <a href="#form" class="border border-[#3fe8d1] text-[#3fe8d1] px-5 md:px-8 py-2 md:py-2.5 rounded-full text-[10px] md:text-[11px] font-black hover:bg-[#3fe8d1] hover:text-black transition uppercase">Связаться</a>
+    </nav>
+
+    <section class="min-h-screen flex items-center pt-28 pb-16 px-4 md:px-10 relative overflow-hidden">
+        <div class="container mx-auto flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-20 items-center z-10">
+            <div class="text-center lg:text-left">
+                <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 lg:mb-8">
+                    Партнерская программа для <br>
+                    <span class="text-[#3fe8d1] neon-glow italic">IT-интеграторов</span>
+                </h1>
+                <p class="text-gray-400 text-sm md:text-lg max-w-xl mb-8 lg:mb-12 font-light mx-auto lg:mx-0 leading-relaxed">
+                    Unibell объединяет производителя высокотехнологичных решений с партнёрами и разработчиками ПО, чтобы совместно отвечать на запросы рынка в российском софте и создавать перспективы для бизнеса.
+                </p>
+                <a href="#form" class="btn-neon">Стать партнером</a>
+            </div>
+
+            <div class="flex justify-center items-center w-full">
+                <div class="hero-circle">
+                    <img src="unibell-logo.png" alt="Unibell" class="brand-logo-hero select-none" />
+                    <div class="floating-widget" style="top: 5%; right: -5%;">
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-[#3fe8d1]" size="14"></i><span>Регистрация онлайн</span></div>
+                    </div>
+                    <div class="floating-widget" style="bottom: 10%; left: -5%;">
+                        <div class="flex items-center gap-2"><i data-lucide="shield" class="text-[#3fe8d1]" size="14"></i><span>Защита проектов</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="py-20 lg:py-32 px-4 md:px-10 bg-black/10">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-black mb-12 lg:mb-20 text-center uppercase tracking-tighter">Преимущества <span class="text-[#3fe8d1]">программы</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="user-plus"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Простая регистрация</h4>
+                    <p class="text-gray-400 text-sm">Онлайн-заявка и минимум документов — быстро и удобно.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="headset"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Поддержка вендора</h4>
+                    <p class="text-gray-400 text-sm">Пресейл-поддержка, помощь в тестировании и пилотировании, консультации.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="shield-check"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Защита проектов</h4>
+                    <p class="text-gray-400 text-sm">Прозрачная система регистрации сделок через выбранного дистрибьютора.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="percent"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Система скидок</h4>
+                    <p class="text-gray-400 text-sm">Гибкая система скидок и защита вашей маржи в зависимости от продукта.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="code"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Основа для разработки</h4>
+                    <p class="text-gray-400 text-sm">Продукты интегрируются со множеством систем по стандартным интерфейсам.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="graduation-cap"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Семинары и вебинары</h4>
+                    <p class="text-gray-400 text-sm">Онлайн-курсы для продавцов, пресейла и технических специалистов.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="megaphone"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Маркетинг</h4>
+                    <p class="text-gray-400 text-sm">Совместные маркетинговые активности и мероприятия для заказчиков.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="key"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Триальные лицензии</h4>
+                    <p class="text-gray-400 text-sm">Доступ к тестовым версиям через личный кабинет партнера.</p>
+                </div>
+                <div class="premium-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] mb-6"><i data-lucide="star"></i></div>
+                    <h4 class="text-lg font-bold mb-3">Проекты вендора</h4>
+                    <p class="text-gray-400 text-sm">Отбор по компетенциям для участия в профильных конкурсах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="status" class="py-20 lg:py-32 px-4 md:px-10">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-black mb-16 text-center uppercase">Получение партнерского статуса</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl font-black text-white/5 mb-[-25px]">1</div>
+                    <h5 class="font-bold relative z-10 text-sm md:text-base">Заполните анкету</h5>
+                    <p class="text-gray-500 text-xs mt-4">Онлайн-форма на сайте Unibell</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-black text-white/5 mb-[-25px]">2</div>
+                    <h5 class="font-bold relative z-10 text-sm md:text-base">Примите оферту</h5>
+                    <p class="text-gray-500 text-xs mt-4">Отправьте данные на проверку</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-black text-white/5 mb-[-25px]">3</div>
+                    <h5 class="font-bold relative z-10 text-sm md:text-base">Связь с менеджером</h5>
+                    <p class="text-gray-500 text-xs mt-4">Обсуждение форматов работы</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-black text-white/5 mb-[-25px]">4</div>
+                    <h5 class="font-bold relative z-10 text-sm md:text-base">Статус и сертификат</h5>
+                    <p class="text-gray-500 text-xs mt-4">Появитесь в списке партнеров</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="form" class="py-20 lg:py-32 px-4 md:px-10 bg-black/10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="premium-card p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] border-[#3fe8d1]/20">
+                <div class="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-20">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-black mb-8 uppercase tracking-tighter">Связаться <br><span class="text-[#3fe8d1]">с нами</span></h2>
+                        <p class="text-gray-400 mb-10 text-sm md:text-base">По любым вопросам работы партнерской программы вы можете связаться с нами удобным способом:</p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] flex-shrink-0"><i data-lucide="phone" size="18"></i></div>
+                                <div><p class="text-[9px] uppercase text-gray-500 font-bold mb-1">Телефон</p><p class="font-bold">8 495 13 99 333</p></div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] flex-shrink-0"><i data-lucide="mail" size="18"></i></div>
+                                <div><p class="text-[9px] uppercase text-gray-500 font-bold mb-1">E-mail</p><p class="font-bold">info@unibell.ru</p></div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#3fe8d1]/10 rounded-xl flex items-center justify-center text-[#3fe8d1] flex-shrink-0"><i data-lucide="send" size="18"></i></div>
+                                <div><p class="text-[9px] uppercase text-gray-500 font-bold mb-1">Telegram</p><p class="font-bold">@Unibell_Partner</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="tg-form" class="space-y-4">
+                        <h3 class="text-lg font-bold mb-4">Станьте партнером Unibell</h3>
+                        <input type="text" name="name" placeholder="Ваше имя" required class="innovative-input">
+                        <input type="text" name="company" placeholder="Компания" required class="innovative-input">
+                        <input type="tel" name="phone" placeholder="Телефон" required class="innovative-input">
+
+                        <div class="space-y-3 pt-1">
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="pd" required class="mt-1 w-5 h-5 accent-[#3fe8d1] flex-shrink-0">
+                                <label for="pd" class="text-[10px] text-gray-500 italic leading-relaxed">
+                                    Согласен(на) с
+                                    <a href="politika-pd.pdf" target="_blank" class="text-[#3fe8d1] hover:underline not-italic font-semibold">Политикой обработки персональных данных</a>.
+                                </label>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="offer" required class="mt-1 w-5 h-5 accent-[#3fe8d1] flex-shrink-0">
+                                <label for="offer" class="text-[10px] text-gray-500 italic leading-relaxed">
+                                    Принимаю условия
+                                    <a href="oferta.pdf" target="_blank" class="text-[#3fe8d1] hover:underline not-italic font-semibold">Оферты</a>.
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-neon">Отправить анкету</button>
+                        <p id="form-status" class="text-center text-sm hidden pt-4 font-bold"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-4 md:px-10 border-t border-white/5">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="#" class="flex items-center">
+                <img src="unibell-logo.png" alt="Unibell" class="brand-logo-footer select-none" />
+            </a>
+            <div class="text-gray-600 text-[9px] uppercase tracking-widest font-bold text-center">© 2025 UNIBELL PLATFORM. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
+            <div class="flex gap-6">
+                <a href="https://www.unibell.ru/" target="_blank" class="text-gray-400 hover:text-[#3fe8d1] transition text-xs">www.unibell.ru</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.to(".floating-widget", { y: -10, duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.5 });
+
+        const botToken = '7934977118:AAFRXEH1AytBC2CuHqSCWU5Tg6l65jRe7j4';
+        const chatId = '6917224815';
+        const form = document.getElementById('tg-form');
+        const status = document.getElementById('form-status');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const msg = `🚀 ЗАЯВКА ПАРТНЕРА\n👤 Имя: ${formData.get('name')}\n🏢 Компания: ${formData.get('company')}\n📞 Тел: ${formData.get('phone')}`;
+
+            try {
+                const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatId, text: msg })
+                });
+                if (res.ok) {
+                    status.textContent = "Спасибо! Мы свяжемся с вами в ближайшее время.";
+                    status.classList.remove('hidden', 'text-red-500');
+                    status.classList.add('text-[#3fe8d1]');
+                    form.reset();
+                } else { throw new Error(); }
+            } catch (err) {
+                status.textContent = "Ошибка. Попробуйте еще раз.";
+                status.classList.remove('hidden');
+                status.classList.add('text-red-500');
+            }
+        };
+    </script>
+</body>
+</html>
